@@ -194,10 +194,10 @@
     <!-- Consultation & Offices (Compact) -->
     <section class="section">
       <div class="container">
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: flex-start;">
+        <div class="grid-2col-split">
 
           <!-- Consultation Booking Form -->
-          <div style="background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.25rem; box-shadow: var(--shadow-e2);" class="reveal-on-scroll">
+          <div style="background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(1.2rem, 3vw, 2.25rem); box-shadow: var(--shadow-e2);" class="reveal-on-scroll">
             <h2 class="text-h2" style="font-size: 1.6rem; margin-bottom: 0.35rem;">Schedule Discovery Session</h2>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
               Fill in your details to route your inquiry directly to the relevant practice lead.
@@ -207,7 +207,7 @@
               <!-- Honeypot -->
               <input type="text" class="honeypot-field" tabindex="-1" autocomplete="off">
 
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div class="grid-form-2col">
                 <div class="form-group">
                   <label class="form-label" for="c-first-name">First Name *</label>
                   <input type="text" id="c-first-name" class="form-input" required placeholder="Elena">
@@ -218,7 +218,7 @@
                 </div>
               </div>
 
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div class="grid-form-2col">
                 <div class="form-group">
                   <label class="form-label" for="c-email">Work Email *</label>
                   <input type="email" id="c-email" class="form-input" required placeholder="name@enterprise.com">
@@ -229,7 +229,7 @@
                 </div>
               </div>
 
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+              <div class="grid-form-2col">
                 <div class="form-group">
                   <label class="form-label" for="c-company">Company / Organization *</label>
                   <input type="text" id="c-company" class="form-input" required placeholder="Global Enterprise Ltd">
@@ -440,7 +440,7 @@
 
         <div class="footer-col">
           <h4>Executive Briefing</h4>
-          <p style="font-size: 0.82rem; color: var(--navy-500); margin-bottom: 0.75rem;">
+          <p style="font-size: 0.82rem; color: #D8E6F5; margin-bottom: 0.75rem;">
             Subscribe to our monthly briefing on enterprise AI and autonomous operations.
           </p>
           <form class="newsletter-form" data-validate="true">

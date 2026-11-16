@@ -858,10 +858,18 @@ function generateChatbotReply(query) {
    11B. WhatsApp Floating Chat Button (Dynamic from data.js)
    ========================================================================== */
 function initWhatsAppFloatingButton() {
-  const company = window.ALISIL_DATA?.company || {};
-  const rawNumber = (company.whatsappRaw || company.whatsapp || '918049208800').replace(/[^0-9]/g, '');
-  const greeting = company.whatsappGreeting || 'Hello Alisil Technology, I am interested in your enterprise AI and technology services. I would like to learn more.';
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${rawNumber}&text=${encodeURIComponent(greeting)}`;
+  const getWhatsAppDetails = () => {
+    const company = window.ALISIL_DATA?.company || {};
+    const rawNumber = (company.whatsappRaw || company.whatsapp || '919874199630').replace(/[^0-9]/g, '');
+    const greeting = company.whatsappGreeting || 'Hello Alisil Technology, I am interested in your enterprise AI and technology services. I would like to learn more.';
+    return {
+      rawNumber,
+      greeting,
+      url: `https://api.whatsapp.com/send?phone=${rawNumber}&text=${encodeURIComponent(greeting)}`
+    };
+  };
+
+  const initial = getWhatsAppDetails();
 
   let btn = document.getElementById('whatsapp-floating-btn');
   if (!btn) {
@@ -881,7 +889,10 @@ function initWhatsAppFloatingButton() {
     document.body.appendChild(btn);
   }
 
-  btn.href = whatsappUrl;
+  btn.href = initial.url;
+  btn.addEventListener('click', () => {
+    btn.href = getWhatsAppDetails().url;
+  });
 }
 
 /* ==========================================================================

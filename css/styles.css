@@ -142,6 +142,9 @@ html {
   font-size: 15px; /* Compact base scale */
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -152,9 +155,17 @@ body {
   background-color: var(--bg);
   transition: background-color var(--transition-normal), color var(--transition-normal);
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Strict Focus Ring as per design.md (3px outline sky-300, 2px offset) */
@@ -350,6 +361,7 @@ a:hover {
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  contain: paint;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 
@@ -444,6 +456,7 @@ a:hover {
   line-height: 1;
   position: relative;
   overflow: hidden;
+  contain: paint;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -913,27 +926,33 @@ a:hover {
   padding: 6px;
 }
 
-/* Uniform Mobile Navigation Drawer */
+/* Uniform Mobile Navigation Drawer (Completely removed from layout when closed to eliminate scroll overflow) */
 .mobile-drawer {
+  display: none !important;
+}
+
+.mobile-drawer.open {
+  display: flex !important;
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 320px;
-  max-width: 86vw;
+  right: 0;
+  width: 300px;
+  max-width: 85vw;
   height: 100vh;
   background: var(--surface);
   border-left: 1px solid var(--border);
   box-shadow: var(--shadow-e3);
   z-index: 1100;
-  display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
+  box-sizing: border-box;
+  animation: drawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mobile-drawer.open {
-  right: 0;
+@keyframes drawerSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .drawer-header {
@@ -1733,7 +1752,7 @@ a:hover {
    ========================================================================== */
 .site-footer {
   background: var(--navy-900);
-  color: var(--navy-500);
+  color: #EDF4FC;
   padding-top: 3.75rem;
   padding-bottom: 2.5rem;
   border-top: 1px solid var(--border);
@@ -1748,10 +1767,11 @@ a:hover {
 }
 
 .footer-brand p {
-  color: var(--navy-500);
+  color: #D8E6F5;
   font-size: 0.88rem;
   margin-top: 0.85rem;
   margin-bottom: 1.25rem;
+  line-height: 1.6;
 }
 
 .footer-col h4 {
@@ -1763,6 +1783,10 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.footer-col p {
+  color: #D8E6F5 !important;
+}
+
 .footer-links {
   list-style: none;
   display: flex;
@@ -1771,15 +1795,17 @@ a:hover {
 }
 
 .footer-links a {
-  color: var(--navy-500);
+  color: #D8E6F5;
   font-size: 0.85rem;
+  text-decoration: none;
   transition: color var(--transition-fast), transform var(--transition-fast);
   display: inline-block;
 }
 
 .footer-links a:hover {
-  color: var(--sky-300);
+  color: #FFFFFF;
   transform: translateX(2px);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .newsletter-form {
@@ -1790,7 +1816,7 @@ a:hover {
 
 .newsletter-input {
   background: var(--navy-800);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #FFFFFF;
   padding: 0.65rem 0.85rem;
   border-radius: var(--radius-sm);
@@ -1798,8 +1824,12 @@ a:hover {
   width: 100%;
 }
 
+.newsletter-input::placeholder {
+  color: #A3BFDB;
+}
+
 .newsletter-input:focus {
-  border-color: var(--sky-500);
+  border-color: var(--sky-400);
 }
 
 .footer-bottom {
@@ -1807,14 +1837,35 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding-top: 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 0.82rem;
+  color: #D8E6F5;
+}
+
+.footer-bottom a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.footer-bottom a:hover {
+  color: var(--amber-400);
 }
 
 .footer-legal-links {
   display: flex;
   gap: 1.25rem;
   list-style: none;
+}
+
+.footer-legal-links a {
+  color: #D8E6F5;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-legal-links a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
 }
 
 /* ==========================================================================
@@ -1904,10 +1955,17 @@ dialog::backdrop {
 }
 
 .honeypot-field {
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* ==========================================================================
@@ -1982,6 +2040,8 @@ dialog::backdrop {
   cursor: pointer;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
   overflow: hidden;
+  contain: paint;
+  box-sizing: border-box;
 }
 
 .whatsapp-floating-btn::before {
@@ -2047,26 +2107,6 @@ dialog::backdrop {
   white-space: nowrap;
 }
 
-/* Position adjustments on mobile */
-@media (max-width: 640px) {
-  .whatsapp-floating-btn {
-    bottom: 20px;
-    right: 16px;
-    padding: 0.6rem;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    justify-content: center;
-  }
-  .whatsapp-btn-text {
-    display: none;
-  }
-  .whatsapp-icon-wrap {
-    width: 26px;
-    height: 26px;
-  }
-}
-
 /* Floating AI Concierge Chatbot Widget */
 .ai-chat-launcher {
   position: fixed;
@@ -2086,6 +2126,9 @@ dialog::backdrop {
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(11, 27, 51, 0.35);
   transition: all var(--transition-fast);
+  overflow: hidden;
+  contain: paint;
+  box-sizing: border-box;
 }
 
 .ai-chat-launcher:hover {
@@ -2098,7 +2141,7 @@ dialog::backdrop {
   bottom: 74px;
   left: 20px;
   width: 360px;
-  max-width: 90vw;
+  max-width: calc(100vw - 40px);
   height: 480px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -2110,14 +2153,174 @@ dialog::backdrop {
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translateY(16px);
   transition: all var(--transition-normal);
+  box-sizing: border-box;
 }
 
 .chat-widget-panel.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
+}
+
+/* Position adjustments & strict anti-overflow layout on mobile viewports (< 640px) */
+@media (max-width: 640px) {
+  .whatsapp-floating-btn {
+    bottom: 16px;
+    right: 14px;
+    padding: 0;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    box-sizing: border-box;
+    contain: paint;
+  }
+  .whatsapp-btn-text {
+    display: none !important;
+  }
+  .whatsapp-icon-wrap {
+    width: 26px;
+    height: 26px;
+    margin: 0;
+  }
+  .whatsapp-floating-btn::before {
+    display: none;
+  }
+
+  .ai-chat-launcher {
+    bottom: 16px;
+    left: 14px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    box-sizing: border-box;
+    contain: paint;
+  }
+  .ai-chat-launcher span:not(.chat-status-dot) {
+    display: none !important;
+  }
+  .ai-chat-launcher .chat-status-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  .chat-widget-panel {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+    bottom: 72px;
+    height: min(480px, 75vh);
+  }
+
+  .toast-container {
+    left: 10px;
+    right: 10px;
+    max-width: calc(100vw - 20px);
+    bottom: 72px;
+  }
+  .toast {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Single column grids on mobile prevent card overflow beyond 100vw */
+  .services-grid,
+  .ai-matrix-grid,
+  .case-studies-grid,
+  .industries-strip,
+  .hero-stats-strip,
+  .impact-numbers-grid,
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cert-widget-previews {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  /* Button text wrapping and responsive limits on mobile */
+  .btn {
+    white-space: normal !important;
+    text-align: center;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .roi-calculator-box {
+    padding: 1.25rem 0.85rem !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Grid System (Ensures multi-column sections collapse on mobile)
+   ========================================================================== */
+.grid-2col-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.grid-2col-balanced {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.grid-form-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.grid-card-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.grid-stat-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid-2col-split,
+  .grid-2col-balanced,
+  .grid-form-2col,
+  .grid-card-metrics,
+  .grid-stat-split {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
 }
 
 .chat-panel-header {
