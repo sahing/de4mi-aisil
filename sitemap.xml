@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- 1. Homepage & Global Overview -->
+  <url>
+    <loc>https://alisiltechnology.in/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 2. Services Portfolio (15 Enterprise Services across 5 Pillars) -->
+  <url>
+    <loc>https://alisiltechnology.in/services.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 3. Signature AI is Replacing & Changing Matrix -->
+  <url>
+    <loc>https://alisiltechnology.in/ai-impact.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 4. Industry Verticals & Domain Architectures -->
+  <url>
+    <loc>https://alisiltechnology.in/industries.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 5. Enterprise Client Case Studies & ROI Verification -->
+  <url>
+    <loc>https://alisiltechnology.in/case-studies.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 6. Technical Insights, Research Reports & Whitepapers -->
+  <url>
+    <loc>https://alisiltechnology.in/insights.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 7. About Alisil Technology, Executive Leadership & Accreditations -->
+  <url>
+    <loc>https://alisiltechnology.in/about.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 8. Careers & AI Reskilling Academy -->
+  <url>
+    <loc>https://alisiltechnology.in/careers.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 9. Book a Consultation, WhatsApp Dispatch & Global Offices -->
+  <url>
+    <loc>https://alisiltechnology.in/contact.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+</urlset>

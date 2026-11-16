@@ -1,0 +1,129 @@
+# ==============================================================================
+# .htaccess for Alisil Technology (https://alisiltechnology.in)
+# "Powering Businesses Through Smart Technology"
+# ==============================================================================
+
+# Prevent Directory Browsing
+Options -Indexes
+
+# Follow Symbolic Links
+Options +FollowSymLinks
+
+# Default Charset
+AddDefaultCharset UTF-8
+
+# ==============================================================================
+# 1. URL REWRITE & DEFAULT REDIRECT TO INDEX
+# All non-existent URLs redirect to index.html by default
+# ==============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ensure HTTPS (Optional / Recommended for production)
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Clean URLs: If requesting a page without .html extension (e.g. /services),
+  # check if the corresponding .html file exists and internally rewrite to it
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.html [L]
+
+  # NON-EXISTENT URL REDIRECT RULE:
+  # If the requested URL does not match any existing file (-f)
+  # and does not match any existing directory (-d),
+  # redirect by default to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^.*$ /index.html [L,R=302]
+</IfModule>
+
+# ==============================================================================
+# 2. ERROR DOCUMENTS FALLBACK
+# ==============================================================================
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html
+ErrorDocument 500 /index.html
+
+# ==============================================================================
+# 3. MIME TYPES FOR MODERN ASSETS
+# ==============================================================================
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg .svgz
+  AddType application/json .json
+  AddType application/ld+json .jsonld
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+</IfModule>
+
+# ==============================================================================
+# 4. SECURITY HEADERS
+# ==============================================================================
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Protect against clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # Control referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Disable unwanted browser features
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Block access to hidden configuration and version control files
+<FilesMatch "^\.(?!well-known)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ==============================================================================
+# 5. BROWSER CACHING (LEVERAGE CACHE FOR PERFORMANCE)
+# ==============================================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML documents (quick freshness)
+  ExpiresByType text/html "access plus 1 hour"
+
+  # CSS and JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Images and Icons
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Data & XML
+  ExpiresByType text/xml "access plus 1 day"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+# ==============================================================================
+# 6. GZIP / DEFLATE COMPRESSION
+# ==============================================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
