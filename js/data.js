@@ -692,8 +692,8 @@ const ALISIL_DATA = {
       region: "Karnataka",
       postalCode: "560103",
       country: "India",
-      phone: "+91 80 4920 8800",
-      phoneRaw: "918049208800",
+      phone: "+919874199630",
+      phoneRaw: "919874199630",
       email: "Alisiltechnology@gmail.com",
       coords: "12.9352° N, 77.6946° E"
     },
@@ -701,7 +701,7 @@ const ALISIL_DATA = {
       city: "Sunnyvale (Silicon Valley)",
       role: "Americas Enterprise Solutions Center",
       address: "440 N Bernardo Ave, Sunnyvale, CA 94085, United States",
-      phone: "+1 (408) 555-0199",
+      phone: "##",
       email: "Alisiltechnology@gmail.com",
       coords: "37.3861° N, 122.0839° W"
     },
@@ -709,7 +709,7 @@ const ALISIL_DATA = {
       city: "London",
       role: "EMEA Advisory & FinTech Hub",
       address: "30 St Mary Axe (The Gherkin), London EC3A 8EP, United Kingdom",
-      phone: "+44 20 7946 0912",
+      phone: "+##",
       email: "Alisiltechnology@gmail.com",
       coords: "51.5145° N, 0.0803° W"
     },
@@ -717,7 +717,7 @@ const ALISIL_DATA = {
       city: "Singapore",
       role: "Asia-Pacific Digital Operations",
       address: "Marina Bay Financial Centre, Tower 2, Singapore 018983",
-      phone: "+65 6789 0123",
+      phone: "##",
       email: "Alisiltechnology@gmail.com",
       coords: "1.2796° N, 103.8536° E"
     },
@@ -725,7 +725,7 @@ const ALISIL_DATA = {
       city: "Frankfurt",
       role: "Continental Europe & ESG Hub",
       address: "Taunusanlage 8, 60329 Frankfurt am Main, Germany",
-      phone: "+49 69 1234 5678",
+      phone: "##",
       email: "Alisiltechnology@gmail.com",
       coords: "50.1109° N, 8.6821° E"
     }
@@ -815,7 +815,7 @@ const ALISIL_DATA = {
     }
   ],
 
-  getSchema: function(type = 'auto') {
+  getSchema: function (type = 'auto') {
     const company = this.company || {};
     const offices = this.offices || [];
     const kolkata = offices.find(o => o.city === 'Kolkata') || {};
