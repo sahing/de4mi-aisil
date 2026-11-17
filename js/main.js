@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initWhatsAppFloatingButton();
   initCookieConsent();
   initForms();
+  initOfficeLocations();
 });
 
 /* ==========================================================================
@@ -958,12 +959,12 @@ function initForms() {
       const message = consultationForm.querySelector('#c-message')?.value.trim() || 'No additional notes provided.';
 
       const now = new Date();
-      const formattedDate = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ', ' + 
-                            now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+      const formattedDate = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ', ' +
+        now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
 
       // Formatted WhatsApp message with executive Markdown typography
-      const whatsappText = 
-`*ALISIL TECHNOLOGY — ENTERPRISE CONSULTATION REQUEST*
+      const whatsappText =
+        `*ALISIL TECHNOLOGY — ENTERPRISE CONSULTATION REQUEST*
 ────────────────────────
 👤 *Client Name:* ${firstName} ${lastName}
 🏢 *Company / Org:* ${company}
@@ -978,7 +979,7 @@ ${message}
 📅 *Submitted:* ${formattedDate}
 🌐 *Source:* Alisil Technology Portal (Alisiltechnology.in)`;
 
-      const whatsappNumber = consultationForm.getAttribute('data-whatsapp') || window.ALISIL_DATA?.company?.whatsappRaw || '918049208800';
+      const whatsappNumber = consultationForm.getAttribute('data-whatsapp') || window.ALISIL_DATA?.company?.whatsappRaw || '919874199630';
       const cleanNumber = whatsappNumber.replace(/[^0-9]/g, '');
       const whatsappUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodeURIComponent(whatsappText)}`;
 
@@ -1073,3 +1074,76 @@ function showToast(message, type = 'info') {
 }
 
 window.showToast = showToast;
+
+/* ==========================================================================
+   14. Dynamic Office Locations & Company Address from data.js
+   ========================================================================== */
+function initOfficeLocations() {
+  const company = window.ALISIL_DATA?.company || {};
+  const offices = window.ALISIL_DATA?.offices || [];
+
+  // Update all elements with [data-company-address]
+  document.querySelectorAll('[data-company-address]').forEach(el => {
+    if (company.officeAddress) {
+      el.innerHTML = `<strong>Office Address:</strong> ${company.officeAddress}`;
+    }
+  });
+
+  // Update all elements with [data-company-phone]
+  document.querySelectorAll('[data-company-phone]').forEach(el => {
+    if (company.phone) {
+      el.textContent = company.phone;
+    }
+  });
+
+  // Populate or synchronize contact page offices list if container exists
+  const contactOffices = document.getElementById('contact-offices-list');
+  if (contactOffices && offices.length > 0) {
+    contactOffices.innerHTML = offices.map(off => {
+      const isKolkata = off.city === 'Kolkata';
+      const cleanPhone = (off.phone || '').replace(/[^0-9+]/g, '');
+      const rawDigits = (off.phoneRaw || off.phone || '').replace(/[^0-9]/g, '');
+      return `
+        <div class="office-location-card" style="background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem;">
+          <span class="badge ${isKolkata ? 'badge-amber' : 'badge-primary'} spark-badge" style="margin-bottom: 0.5rem;">
+            <span class="spark-star" style="font-size: 0.8em;">✦</span> ${off.badge || off.role}
+          </span>
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem;">${off.city} Office</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.85rem;">
+            ${off.address}
+          </p>
+          <div style="font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--text);">
+            <div><strong>Role:</strong> ${off.role}</div>
+            <div><strong>Phone / Mobile:</strong> <a href="tel:${cleanPhone}" style="color: var(--sky-500); font-weight: 600;">${off.phone}</a></div>
+            ${isKolkata ? `<div><strong>WhatsApp Direct:</strong> <a href="https://api.whatsapp.com/send?phone=${rawDigits}" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700;">${off.phone} (Click to Chat 💬)</a></div>` : ''}
+            <div><strong>Email:</strong> <a href="mailto:${off.email || company.email}" style="color: var(--amber-500); font-weight: 600;">${off.email || company.email}</a></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Populate or synchronize about page offices list if container exists
+  const aboutOffices = document.getElementById('about-offices-list');
+  if (aboutOffices && offices.length > 0) {
+    aboutOffices.innerHTML = offices.map(off => {
+      const isKolkata = off.city === 'Kolkata';
+      const cleanPhone = (off.phone || '').replace(/[^0-9+]/g, '');
+      return `
+        <div class="service-card reveal-on-scroll">
+          <span class="badge ${isKolkata ? 'badge-amber' : 'badge-primary'} spark-badge" style="margin-bottom: 0.5rem;">
+            <span class="spark-star" style="font-size: 0.8em;">✦</span> ${off.badge || off.role}
+          </span>
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem;">${off.city}, ${off.country || 'India'}</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.85rem;">
+            ${off.address}. ${off.role}
+          </p>
+          <div style="font-size: 0.82rem; font-weight: 600; color: var(--sky-500);">
+            <a href="mailto:${off.email || company.email}" style="color: var(--amber-600);">${off.email || company.email}</a> · 
+            <a href="tel:${cleanPhone}" style="color: var(--sky-500);">${off.phone}</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+}

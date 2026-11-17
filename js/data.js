@@ -14,6 +14,8 @@ const ALISIL_DATA = {
     whatsapp: "+91 98741 99630",
     whatsappRaw: "919874199630",
     whatsappGreeting: "Hello Alisil Technology, I am interested in your enterprise AI and technology services. I would like to learn more.",
+    officeAddress: "CHARAKTALA, JOKA, P.O, Rasapunja, Kolkata, West Bengal 700104",
+    registeredOffice: "CHARAKTALA, JOKA, P.O, Rasapunja, Kolkata, West Bengal 700104",
     tagline: "Powering Businesses Through Smart Technology",
     mission: "Architecting human-centric, AI-first technology transformations that unlock measurable enterprise resilience and growth.",
     stats: {
@@ -666,10 +668,32 @@ const ALISIL_DATA = {
 
   offices: [
     {
+      city: "Kolkata",
+      role: "Corporate Office & Registered Headquarters",
+      badge: "Office Address",
+      address: "CHARAKTALA, JOKA, P.O, Rasapunja, Kolkata, West Bengal 700104, India",
+      street: "CHARAKTALA, JOKA, P.O, Rasapunja",
+      locality: "Kolkata",
+      region: "West Bengal",
+      postalCode: "700104",
+      country: "India",
+      phone: "+91 98741 99630",
+      phoneRaw: "919874199630",
+      email: "Alisiltechnology@gmail.com",
+      coords: "22.4515° N, 88.2917° E"
+    },
+    {
       city: "Bangalore",
       role: "Global Headquarters & AI Innovation Lab",
+      badge: "Global HQ",
       address: "Alisil Tech Park, Outer Ring Road, Bellandur, Bangalore 560103, India",
+      street: "Alisil Tech Park, Outer Ring Road, Bellandur",
+      locality: "Bangalore",
+      region: "Karnataka",
+      postalCode: "560103",
+      country: "India",
       phone: "+91 80 4920 8800",
+      phoneRaw: "918049208800",
       email: "Alisiltechnology@gmail.com",
       coords: "12.9352° N, 77.6946° E"
     },
