@@ -723,7 +723,7 @@ a:hover {
 }
 
 .brand-logo-img {
-  height: 34px;
+  height: 52px;
   width: auto;
   transition: transform var(--transition-fast);
 }
@@ -2625,8 +2625,8 @@ dialog::backdrop {
   }
 
   .brand-logo-img {
-    height: 24px;
-    max-width: 110px;
+    height: 38px;
+    max-width: 155px;
     width: auto;
   }
 
@@ -2700,8 +2700,8 @@ dialog::backdrop {
   }
 
   .brand-logo-img {
-    max-width: 88px;
-    height: 20px;
+    max-width: 115px;
+    height: 32px;
   }
 
   .nav-actions {
