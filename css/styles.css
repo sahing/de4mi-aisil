@@ -987,6 +987,30 @@ a:hover {
   padding: 0.35rem 0;
 }
 
+/* Compact Book Consultation CTA in Mobile Menu */
+.mobile-drawer-cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-drawer-cta .btn,
+.mobile-drawer .btn {
+  padding: 0.45rem 1.25rem !important;
+  min-height: 36px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 3px 12px rgba(243, 156, 18, 0.35) !important;
+  border-radius: var(--radius-full) !important;
+}
+
 /* ==========================================================================
    7. HERO SECTION (Compact, Dynamic Canvas)
    ========================================================================== */
@@ -2269,6 +2293,10 @@ dialog::backdrop {
   }
 
   .roi-calculator-box {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .ai-matrix-card {
     padding: 1.25rem 0.85rem !important;
   }
 }
