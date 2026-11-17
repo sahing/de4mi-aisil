@@ -900,7 +900,9 @@ a:hover {
   gap: 0.65rem;
 }
 
-.nav-actions .btn {
+.nav-actions .btn,
+.site-header .nav-actions .btn,
+.site-header .nav-actions a.btn {
   white-space: nowrap !important;
   word-break: keep-all !important;
   overflow: hidden;
@@ -2208,8 +2210,8 @@ dialog::backdrop {
   transform: translateY(0);
 }
 
-/* Position adjustments & strict anti-overflow layout on mobile viewports (< 640px) */
-@media (max-width: 640px) {
+/* Position adjustments & strict anti-overflow layout on mobile viewports (<= 768px) */
+@media (max-width: 768px) {
   .whatsapp-floating-btn {
     bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     right: calc(14px + env(safe-area-inset-right, 0px));
@@ -2652,7 +2654,9 @@ dialog::backdrop {
     justify-content: center;
   }
 
-  .nav-actions .btn {
+  .nav-actions .btn,
+  .site-header .nav-actions .btn,
+  .site-header .nav-actions a.btn {
     padding: 0.32rem 0.65rem !important;
     min-height: 32px !important;
     height: 32px !important;
@@ -2713,12 +2717,16 @@ dialog::backdrop {
     min-height: 28px;
   }
 
-  .nav-actions .btn {
+  .nav-actions .btn,
+  .site-header .nav-actions .btn,
+  .site-header .nav-actions a.btn {
     padding: 0.26rem 0.45rem !important;
     font-size: 0.68rem !important;
     min-height: 28px !important;
     height: 28px !important;
     max-height: 28px !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
   }
 }
 
