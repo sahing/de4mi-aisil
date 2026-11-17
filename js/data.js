@@ -813,7 +813,71 @@ const ALISIL_DATA = {
       experience: "5+ years",
       desc: "Deploy Celonis process mining and agentic automation pipelines to eliminate operational bottlenecks across global banking and logistics estates."
     }
-  ]
+  ],
+
+  getSchema: function(type = 'auto') {
+    const company = this.company || {};
+    const offices = this.offices || [];
+    const kolkata = offices.find(o => o.city === 'Kolkata') || {};
+
+    const baseOrg = {
+      "@type": "Organization",
+      "@id": `${company.url || "https://alisiltechnology.in"}/#organization`,
+      "name": company.fullName || company.name || "Alisil Technology",
+      "url": company.url || "https://alisiltechnology.in",
+      "logo": `${company.url || "https://alisiltechnology.in"}/assets/logo-full.svg`,
+      "email": company.email || "Alisiltechnology@gmail.com",
+      "telephone": company.phone || "+91 98741 99630",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": kolkata.street || company.officeAddress || "CHARAKTALA, JOKA, P.O, Rasapunja",
+        "addressLocality": kolkata.locality || "Kolkata",
+        "addressRegion": kolkata.region || "West Bengal",
+        "postalCode": kolkata.postalCode || "700104",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": company.phone || "+91 98741 99630",
+        "email": company.email || "Alisiltechnology@gmail.com",
+        "contactType": "Enterprise Sales & Consultation",
+        "availableLanguage": ["English", "Hindi", "Bengali"]
+      },
+      "sameAs": [
+        company.url || "https://alisiltechnology.in"
+      ]
+    };
+
+    if (type === 'contact') {
+      return {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "mainEntity": baseOrg
+      };
+    }
+
+    if (type === 'about') {
+      return {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": baseOrg
+      };
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        baseOrg,
+        {
+          "@type": "WebSite",
+          "@id": `${company.url || "https://alisiltechnology.in"}/#website`,
+          "url": company.url || "https://alisiltechnology.in",
+          "name": company.name || "Alisil Technology",
+          "publisher": { "@id": `${company.url || "https://alisiltechnology.in"}/#organization` }
+        }
+      ]
+    };
+  }
 };
 
 // Export to window for global browser access

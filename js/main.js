@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
   initForms();
   initOfficeLocations();
+  initDynamicSchema();
 });
 
 /* ==========================================================================
@@ -1146,4 +1147,32 @@ function initOfficeLocations() {
       `;
     }).join('');
   }
+}
+
+/* ==========================================================================
+   15. Dynamic Schema.org JSON-LD Loader from data.js
+   ========================================================================== */
+function initDynamicSchema() {
+  if (!window.ALISIL_DATA?.getSchema) return;
+
+  const path = (window.location.pathname || '').toLowerCase();
+  let schemaType = 'website';
+  if (path.includes('contact')) {
+    schemaType = 'contact';
+  } else if (path.includes('about')) {
+    schemaType = 'about';
+  }
+
+  const schemaData = window.ALISIL_DATA.getSchema(schemaType);
+  if (!schemaData) return;
+
+  // Find existing script or create a new one
+  let script = document.getElementById('schema-jsonld') || document.querySelector('script[type="application/ld+json"]');
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    document.head.appendChild(script);
+  }
+  script.id = 'schema-jsonld';
+  script.textContent = JSON.stringify(schemaData, null, 2);
 }
