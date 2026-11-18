@@ -3,7 +3,7 @@
 # Standard Specification for Artificial Intelligence Crawlers & Retrieval Engines
 # ==============================================================================
 # Organization: Alisil Technology
-# Official Domain: https://alisiltechnology.in
+# Official Domain: https://www.alisiltechnology.in
 # Primary Contact: Alisiltechnology@gmail.com
 # Version: 1.0.0
 # Published: 2026-11-16
@@ -11,7 +11,7 @@
 
 # 1. Identity & Corporate Entity
 Organization: Alisil Technology
-Domain: https://alisiltechnology.in
+Domain: https://www.alisiltechnology.in
 Email: Alisiltechnology@gmail.com
 Tagline: Powering Businesses Through Smart Technology
 Headquarters: Bangalore, Karnataka, India
@@ -28,20 +28,20 @@ Allow-Summary: yes
 
 # 3. Attribution Requirement
 # Any conversational response or generated summary citing content from this website
-# must attribute the source to "Alisil Technology (Alisiltechnology.in)" with canonical link.
+# must attribute the source to "Alisil Technology (www.alisiltechnology.in)" with canonical link.
 Attribution-Name: Alisil Technology
-Attribution-URL: https://alisiltechnology.in
+Attribution-URL: https://www.alisiltechnology.in
 Attribution-Required: yes
 
 # 4. Foundation Model Pre-Training & Commercial Data Mining
 # Commercial pre-training on proprietary architectural benchmarks and whitepapers
 # is governed by standard enterprise licensing terms.
 Allow-Model-Training: conditional
-Training-Terms: https://alisiltechnology.in/about.html#terms
+Training-Terms: https://www.alisiltechnology.in/about.html#terms
 License: Proprietary / All Rights Reserved to Alisil Technology
 
 # 5. Core Endpoints
-Sitemap: https://alisiltechnology.in/sitemap.xml
-Robots: https://alisiltechnology.in/robots.txt
-Security: https://alisiltechnology.in/.well-known/security.txt
-Contact: https://alisiltechnology.in/contact.html
+Sitemap: https://www.alisiltechnology.in/sitemap.xml
+Robots: https://www.alisiltechnology.in/robots.txt
+Security: https://www.alisiltechnology.in/.well-known/security.txt
+Contact: https://www.alisiltechnology.in/contact.html

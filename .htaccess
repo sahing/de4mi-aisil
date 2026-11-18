@@ -1,7 +1,7 @@
 
 # ==============================================================================
 # ALISIL TECHNOLOGY - PRODUCTION .HTACCESS
-# Primary Domain: https://www.alisiltechnology.in
+# Primary Domain: https://www.www.alisiltechnology.in
 # ==============================================================================
 
 # 1. DIRECTORY SECURITY
@@ -20,7 +20,7 @@ AddDefaultCharset UTF-8
     # Force HTTPS + WWW (Canonical Domain)
     RewriteCond %{HTTPS} !=on [OR]
     RewriteCond %{HTTP_HOST} !^www\.alisiltechnology\.in$ [NC]
-    RewriteRule ^ https://www.alisiltechnology.in%{REQUEST_URI} [R=301,L,NE]
+    RewriteRule ^ https://www.www.alisiltechnology.in%{REQUEST_URI} [R=301,L,NE]
 
     # Clean URLs: /services -> /services.html
     RewriteCond %{REQUEST_FILENAME} !-f

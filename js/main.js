@@ -850,7 +850,7 @@ function generateChatbotReply(query) {
   }
 
   if (q.includes('consultation') || q.includes('contact') || q.includes('call') || q.includes('book') || q.includes('email') || q.includes('mail') || q.includes('domain') || q.includes('website')) {
-    return `We'd welcome connecting with you! Reach Alisil Technology directly at <a href="mailto:Alisiltechnology@gmail.com" style="color:var(--amber-500);font-weight:700;">Alisiltechnology@gmail.com</a>, explore our official portal at <a href="https://alisiltechnology.in" target="_blank" rel="noopener" style="color:var(--sky-500);text-decoration:underline;">Alisiltechnology.in</a>, or <a href="contact.html" style="color:var(--amber-500);font-weight:700;">Book a Consultation</a>. Our practice leads respond within 24 business hours.`;
+    return `We'd welcome connecting with you! Reach Alisil Technology directly at <a href="mailto:Alisiltechnology@gmail.com" style="color:var(--amber-500);font-weight:700;">Alisiltechnology@gmail.com</a>, explore our official portal at <a href="https://www.alisiltechnology.in" target="_blank" rel="noopener" style="color:var(--sky-500);text-decoration:underline;">www.alisiltechnology.in</a>, or <a href="contact.html" style="color:var(--amber-500);font-weight:700;">Book a Consultation</a>. Our practice leads respond within 24 business hours.`;
   }
 
   return `Alisil Technology partners with global enterprises to build human-centric, AI-first technology transformations across cloud, cybersecurity, and autonomous operations. How may we assist your roadmap?`;
@@ -978,7 +978,7 @@ function initForms() {
 ${message}
 ────────────────────────
 📅 *Submitted:* ${formattedDate}
-🌐 *Source:* Alisil Technology Portal (Alisiltechnology.in)`;
+🌐 *Source:* Alisil Technology Portal (www.alisiltechnology.in)`;
 
       const whatsappNumber = consultationForm.getAttribute('data-whatsapp') || window.ALISIL_DATA?.company?.whatsappRaw || '919874199630';
       const cleanNumber = whatsappNumber.replace(/[^0-9]/g, '');

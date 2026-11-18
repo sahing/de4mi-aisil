@@ -1,5 +1,5 @@
 # ==============================================================================
-# robots.txt for Alisil Technology (https://alisiltechnology.in)
+# robots.txt for Alisil Technology (https://www.alisiltechnology.in)
 # "Powering Businesses Through Smart Technology"
 # ==============================================================================
 
@@ -34,7 +34,7 @@ Allow: /
 Allow: /assets/
 
 # AI Training Crawlers & Large Language Model Scrapers
-# Governed by machine-readable policy at: https://alisiltechnology.in/ai.txt
+# Governed by machine-readable policy at: https://www.alisiltechnology.in/ai.txt
 User-agent: GPTBot
 User-agent: ClaudeBot
 User-agent: anthropic-ai
@@ -56,4 +56,4 @@ Disallow: /scratch/
 Disallow: /.git/
 
 # XML Sitemap Location
-Sitemap: https://alisiltechnology.in/sitemap.xml
+Sitemap: https://www.alisiltechnology.in/sitemap.xml

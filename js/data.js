@@ -7,8 +7,8 @@ const ALISIL_DATA = {
   company: {
     name: "Alisil Technology",
     fullName: "Alisil Technology",
-    domain: "Alisiltechnology.in",
-    url: "https://alisiltechnology.in",
+    domain: "www.alisiltechnology.in",
+    url: "https://www.alisiltechnology.in",
     email: "Alisiltechnology@gmail.com",
     phone: "+91 98741 99630",
     whatsapp: "+91 98741 99630",
@@ -822,10 +822,10 @@ const ALISIL_DATA = {
 
     const baseOrg = {
       "@type": "Organization",
-      "@id": `${company.url || "https://alisiltechnology.in"}/#organization`,
+      "@id": `${company.url || "https://www.alisiltechnology.in"}/#organization`,
       "name": company.fullName || company.name || "Alisil Technology",
-      "url": company.url || "https://alisiltechnology.in",
-      "logo": `${company.url || "https://alisiltechnology.in"}/assets/logo-full.svg`,
+      "url": company.url || "https://www.alisiltechnology.in",
+      "logo": `${company.url || "https://www.alisiltechnology.in"}/assets/logo-full.svg`,
       "email": company.email || "Alisiltechnology@gmail.com",
       "telephone": company.phone || "+91 98741 99630",
       "address": {
@@ -844,7 +844,7 @@ const ALISIL_DATA = {
         "availableLanguage": ["English", "Hindi", "Bengali"]
       },
       "sameAs": [
-        company.url || "https://alisiltechnology.in"
+        company.url || "https://www.alisiltechnology.in"
       ]
     };
 
@@ -870,10 +870,10 @@ const ALISIL_DATA = {
         baseOrg,
         {
           "@type": "WebSite",
-          "@id": `${company.url || "https://alisiltechnology.in"}/#website`,
-          "url": company.url || "https://alisiltechnology.in",
+          "@id": `${company.url || "https://www.alisiltechnology.in"}/#website`,
+          "url": company.url || "https://www.alisiltechnology.in",
           "name": company.name || "Alisil Technology",
-          "publisher": { "@id": `${company.url || "https://alisiltechnology.in"}/#organization` }
+          "publisher": { "@id": `${company.url || "https://www.alisiltechnology.in"}/#organization` }
         }
       ]
     };
