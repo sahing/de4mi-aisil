@@ -982,6 +982,12 @@ a:hover {
   border-bottom: 1px solid var(--border);
 }
 
+.drawer-header .brand-logo-img {
+  height: 48px;
+  max-width: 200px;
+  width: auto;
+}
+
 .drawer-close {
   background: transparent;
   border: none;

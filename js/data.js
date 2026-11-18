@@ -9,7 +9,7 @@ const ALISIL_DATA = {
     fullName: "Alisil Technology",
     domain: "www.alisiltechnology.in",
     url: "https://www.alisiltechnology.in",
-    email: "Alisiltechnology@gmail.com",
+    email: "alisiltechnology@gmail.com",
     phone: "+91 98741 99630",
     whatsapp: "+91 98741 99630",
     whatsappRaw: "919874199630",
@@ -679,7 +679,7 @@ const ALISIL_DATA = {
       country: "India",
       phone: "+91 98741 99630",
       phoneRaw: "919874199630",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "22.4515° N, 88.2917° E"
     },
     {
@@ -694,7 +694,7 @@ const ALISIL_DATA = {
       country: "India",
       phone: "+919874199630",
       phoneRaw: "919874199630",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "12.9352° N, 77.6946° E"
     },
     {
@@ -702,7 +702,7 @@ const ALISIL_DATA = {
       role: "Americas Enterprise Solutions Center",
       address: "440 N Bernardo Ave, Sunnyvale, CA 94085, United States",
       phone: "##",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "37.3861° N, 122.0839° W"
     },
     {
@@ -710,7 +710,7 @@ const ALISIL_DATA = {
       role: "EMEA Advisory & FinTech Hub",
       address: "30 St Mary Axe (The Gherkin), London EC3A 8EP, United Kingdom",
       phone: "+##",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "51.5145° N, 0.0803° W"
     },
     {
@@ -718,7 +718,7 @@ const ALISIL_DATA = {
       role: "Asia-Pacific Digital Operations",
       address: "Marina Bay Financial Centre, Tower 2, Singapore 018983",
       phone: "##",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "1.2796° N, 103.8536° E"
     },
     {
@@ -726,7 +726,7 @@ const ALISIL_DATA = {
       role: "Continental Europe & ESG Hub",
       address: "Taunusanlage 8, 60329 Frankfurt am Main, Germany",
       phone: "##",
-      email: "Alisiltechnology@gmail.com",
+      email: "alisiltechnology@gmail.com",
       coords: "50.1109° N, 8.6821° E"
     }
   ],
@@ -826,7 +826,7 @@ const ALISIL_DATA = {
       "name": company.fullName || company.name || "Alisil Technology",
       "url": company.url || "https://www.alisiltechnology.in",
       "logo": `${company.url || "https://www.alisiltechnology.in"}/assets/logo-full.svg`,
-      "email": company.email || "Alisiltechnology@gmail.com",
+      "email": company.email || "alisiltechnology@gmail.com",
       "telephone": company.phone || "+91 98741 99630",
       "address": {
         "@type": "PostalAddress",
@@ -839,7 +839,7 @@ const ALISIL_DATA = {
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": company.phone || "+91 98741 99630",
-        "email": company.email || "Alisiltechnology@gmail.com",
+        "email": company.email || "alisiltechnology@gmail.com",
         "contactType": "Enterprise Sales & Consultation",
         "availableLanguage": ["English", "Hindi", "Bengali"]
       },

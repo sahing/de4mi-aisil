@@ -1,4 +1,4 @@
-Contact: mailto:Alisiltechnology@gmail.com
+Contact: mailto:alisiltechnology@gmail.com
 Preferred-Languages: en
 Canonical: https://www.alisiltechnology.in/.well-known/security.txt
 Policy: https://www.alisiltechnology.in/about.html#privacy
